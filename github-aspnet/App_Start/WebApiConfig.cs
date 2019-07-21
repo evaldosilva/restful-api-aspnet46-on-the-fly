@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace github_aspnet
@@ -13,6 +11,10 @@ namespace github_aspnet
 
             // Web API routes
             config.MapHttpAttributeRoutes();
+
+            // Config Web API to returns JSON format
+            config.Formatters.JsonFormatter.SupportedMediaTypes
+            .Add(new MediaTypeHeaderValue("text/html"));
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
